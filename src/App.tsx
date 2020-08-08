@@ -32,7 +32,7 @@ interface State {
 
 class App extends Component<never, State> {
 
-  state: State = {
+  state = {
     photos: []
   }
 
