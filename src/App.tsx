@@ -27,11 +27,13 @@ interface Photo {
 }
 
 interface State {
-  photos: ReadonlyArray<Photo>;
+  photos: Array<Photo>;
 }
 
-class App extends Component<never, State> {
-
+interface IProps {
+  age?: number
+}
+class App extends Component<IProps, State> {
   state = {
     photos: []
   }
@@ -54,7 +56,7 @@ class App extends Component<never, State> {
           {this.state.photos.map(elem => {
             return (
               <li>
-                <img src={elem.img_src} />
+                <img src={(elem as any).img_src || 'hello'} />
               </li>
             )
           })}
